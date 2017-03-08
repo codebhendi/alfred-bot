@@ -6,6 +6,7 @@ class Song:
         self.mediadir = ""
         self.fname = "playlist.txt"
 	self.speaker = speaker        
+	self.status = False
 
         with open(self.fname) as f:
             self.content = f.readlines()
