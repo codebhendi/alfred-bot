@@ -2,10 +2,11 @@ import vlc
 
 class Song:
 
-    def __init__(self):
+    def __init__(self, speaker):
         self.mediadir = ""
         self.fname = "playlist.txt"
-        
+	self.speaker = speaker        
+
         with open(self.fname) as f:
             self.content = f.readlines()
 
@@ -13,15 +14,21 @@ class Song:
 
 
     def play(self, number=0):
-
-        name = self.content[0]
-        self.player = vlc.MediaPlayer(name)
-        self.player.play()
-        self.status = True
+	if self.status == False:
+        	name = self.content[0]
+        	self.player = vlc.MediaPlayer(name)
+		self.player.play()
+        	self.status = True
+	else:
+		self.stop()
+		self.play()
 
     def stop(self):
-        self.player.stop()
-        self.status = False
+	if self.status == True:
+        	self.player.stop()
+        	self.status = False
+	else:
+		self.speaker.say("you are not playing any songs right now")
 
     def check_command(self, data):
         if "play" in data:

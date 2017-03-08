@@ -43,8 +43,8 @@ class SpeechDetector:
         self.MODULES = ["light", "time", "alarm", "remind", "song", "article"]
         self.STATES = ["tell", "on", "off", "set", "unset", "play", "stop", "use"]
         self.light = Light()    
-        self.song = Song()
         self.speaker = speaker.Speaker()
+	self.song = Song(self.speaker)
         # These will need to be modified according to where the pocketsphinx folder is
         MODELDIR = "en-adapt"
 
@@ -57,7 +57,7 @@ class SpeechDetector:
         # Creaders decoder object for streaming data.
         self.decoder = Decoder(config)
 
-    def setup_mic(self, num_samples=100):
+    def setup_mic(self, num_samples=50):
         """ Gets average audio intensity of your mic sound. You can use it to get
             average intensities while you're talking and/or silent. The average
             is the avg of the .2 of the largest intensities recorded.
@@ -73,7 +73,7 @@ class SpeechDetector:
         values = [math.sqrt(abs(audioop.avg(stream.read(self.CHUNK), 4)))
                   for x in range(num_samples)]
         values = sorted(values, reverse=True)
-        r = sum(values[:int(num_samples * 0.1)]) / int(num_samples * 0.1)
+        r = sum(values[:int(num_samples * 0.2)]) / int(num_samples * 0.2)
         print " Finished "
         print " Average audio intensity is ", r
         stream.close()
@@ -157,6 +157,11 @@ class SpeechDetector:
             elif started:
                 print "Finished recording, decoding phras"
                 filename = self.save_speech(list(prev_audio) + audio2send, p)
+		tempp_r = self.decode_phrase(filename)
+		
+		if not "search" in time_r:
+			self.speaker.say("say again")
+			continue	
                 r = self.google_decode(filename)
                 
                 os.remove(filename)
