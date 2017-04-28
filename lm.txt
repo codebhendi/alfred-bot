@@ -1,0 +1,8 @@
+alfred tell the time
+alfred turn on the light
+alfred turn off the light
+alfred wake me up
+alfred remind me of
+alfred play a song
+alfred check an article
+alfred stop song

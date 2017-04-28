@@ -1,0 +1,6 @@
+<s> alfred tell the time </s>
+<s> alfred turn on the light </s>
+<s> alfred turn off the light </s>
+<s> alfred wake me up </s>
+<s> alfred remind me of </s>
+<s> alfred </s>

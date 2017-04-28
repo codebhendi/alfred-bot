@@ -1,0 +1,78 @@
+Language model created by QuickLM on Tue Apr 25 20:26:29 EDT 2017
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 5 sentences and 15 words
+
+\data\
+ngram 1=15
+ngram 2=20
+ngram 3=20
+
+\1-grams:
+-1.1072 </s> -0.3010
+-1.1072 <s> -0.2657
+-1.1072 ALFRED -0.2657
+-1.5051 LIGHT -0.2657
+-1.5051 ME -0.2872
+-1.8062 OF -0.2657
+-1.8062 OFF -0.2802
+-1.8062 ON -0.2802
+-1.8062 REMIND -0.2872
+-1.8062 TELL -0.2802
+-1.3291 THE -0.2802
+-1.8062 TIME -0.2657
+-1.5051 TURN -0.2872
+-1.8062 UP -0.2657
+-1.8062 WAKE -0.2872
+
+\2-grams:
+-0.3010 <s> ALFRED 0.0000
+-1.0000 ALFRED REMIND 0.0000
+-1.0000 ALFRED TELL 0.0000
+-0.6990 ALFRED TURN 0.0000
+-1.0000 ALFRED WAKE 0.0000
+-0.3010 LIGHT </s> -0.3010
+-0.6021 ME OF 0.0000
+-0.6021 ME UP 0.0000
+-0.3010 OF </s> -0.3010
+-0.3010 OFF THE -0.1249
+-0.3010 ON THE -0.1249
+-0.3010 REMIND ME -0.1761
+-0.3010 TELL THE -0.2218
+-0.4771 THE LIGHT 0.0000
+-0.7782 THE TIME 0.0000
+-0.3010 TIME </s> -0.3010
+-0.6021 TURN OFF 0.0000
+-0.6021 TURN ON 0.0000
+-0.3010 UP </s> -0.3010
+-0.3010 WAKE ME -0.1761
+
+\3-grams:
+-1.0000 <s> ALFRED REMIND
+-1.0000 <s> ALFRED TELL
+-0.6990 <s> ALFRED TURN
+-1.0000 <s> ALFRED WAKE
+-0.3010 ALFRED REMIND ME
+-0.3010 ALFRED TELL THE
+-0.6021 ALFRED TURN OFF
+-0.6021 ALFRED TURN ON
+-0.3010 ALFRED WAKE ME
+-0.3010 ME OF </s>
+-0.3010 ME UP </s>
+-0.3010 OFF THE LIGHT
+-0.3010 ON THE LIGHT
+-0.3010 REMIND ME OF
+-0.3010 TELL THE TIME
+-0.3010 THE LIGHT </s>
+-0.3010 THE TIME </s>
+-0.3010 TURN OFF THE
+-0.3010 TURN ON THE
+-0.3010 WAKE ME UP
+
+\end\

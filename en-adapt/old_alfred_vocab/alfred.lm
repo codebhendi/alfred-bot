@@ -1,0 +1,119 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 15 words,
+  which begins "</s>", "<s>", "alfred"...
+This is a CLOSED-vocabulary model
+  (OOVs eliminated from training data and are forbidden in test data)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 8 
+2-gram frequency of frequency : 16 3 0 0 2 0 0 
+3-gram frequency of frequency : 21 3 0 0 1 0 0 
+1-gram discounting ratios : 0.00 
+2-gram discounting ratios : 0.00 
+3-gram discounting ratios : 0.00 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=15
+ngram 2=21
+ngram 3=25
+
+\1-grams:
+-0.6812 </s>	-0.7436
+-0.6812 <s>	-0.6767
+-0.6812 alfred	-0.1841
+-1.0792 light	-0.5006
+-1.0792 me	0.0000
+-99.9990 of	0.1015
+-99.9990 off	0.0580
+-99.9990 on	0.0580
+-99.9990 remind	0.0378
+-99.9990 tell	0.0580
+-0.9031 the	-0.5643
+-99.9990 time	0.1015
+-1.0792 turn	0.0000
+-99.9990 up	0.1015
+-99.9990 wake	0.0378
+
+\2-grams:
+-0.0669 </s> <s> 0.0000
+-0.0792 <s> alfred 0.0000
+-99.9990 alfred remind 0.0000
+-99.9990 alfred tell 0.0000
+-0.3979 alfred turn 0.0000
+-99.9990 alfred wake 0.0000
+-0.1249 light </s> 0.3680
+-99.9990 me of 0.0000
+-99.9990 me up 0.0000
+-99.9990 of </s> 0.8451
+-99.9990 off the 0.6021
+-99.9990 on the 0.6021
+-99.9990 remind me 0.0000
+-99.9990 tell the 0.0000
+-0.1249 the light 0.1249
+-99.9990 the time 0.0000
+-99.9990 time </s> 0.8451
+-99.9990 turn off 0.0000
+-99.9990 turn on 0.0000
+-99.9990 up </s> 0.8451
+-99.9990 wake me 0.0000
+
+\3-grams:
+-0.0792 </s> <s> alfred 
+-99.9990 <s> alfred remind 
+-99.9990 <s> alfred tell 
+-0.3979 <s> alfred turn 
+-99.9990 <s> alfred wake 
+-99.9990 alfred remind me 
+-99.9990 alfred tell the 
+-99.9990 alfred turn off 
+-99.9990 alfred turn on 
+-99.9990 alfred wake me 
+-0.1761 light </s> <s> 
+-99.9990 me of </s> 
+-99.9990 me up </s> 
+-99.9990 of </s> <s> 
+-99.9990 off the light 
+-99.9990 on the light 
+-99.9990 remind me of 
+-99.9990 tell the time 
+-0.1761 the light </s> 
+-99.9990 the time </s> 
+-99.9990 time </s> <s> 
+-99.9990 turn off the 
+-99.9990 turn on the 
+-99.9990 up </s> <s> 
+-99.9990 wake me up 
+
+\end\
